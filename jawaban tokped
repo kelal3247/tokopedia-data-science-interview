@@ -1,0 +1,32 @@
+input_score1 = [1,3,5,6,8]
+upper_limit1 = [6]
+lower_limit1 = [2]
+
+input_score2 = [4,8,7]
+lower_limit2 = [2,4]
+upper_limit2 = [8,4]
+
+def find_score(lower_limit, upper_limit, input_score_list):
+    matched_score = [] # Score that has value between lower limit and upper limit
+    for i, score in enumerate(input_score_list):
+        if score >= lower_limit and score <= upper_limit:
+            matched_score.append(score)
+
+    return matched_score
+
+
+# Find multiple matched scores with multiple lower limits and upper limits
+def find_scores(lower_limits, upper_limits, input_scores_list):
+    results = []
+    for lower_limit, upper_limit in zip(lower_limits, upper_limits):
+        result = find_score(lower_limit, upper_limit, input_scores_list)
+        results.append(len(result))
+    return results
+
+# input 1
+result1 = find_scores(lower_limit1, upper_limit1, input_score1)
+# input 2
+result2 = find_scores(lower_limit2, upper_limit2, input_score2)
+
+print("Result 1st input = " + str(result1))
+print("Result 2nd input = " + str(result2))
